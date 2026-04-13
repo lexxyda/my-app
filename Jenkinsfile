@@ -1,7 +1,20 @@
 pipeline {
     agent any
+
     stages {
-        stage('Run Python App') {
+        stage('Build') {
+            steps {
+                echo 'Building application...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+               sh 'python3 test_app.py'
+            }
+        }
+        
+        stage('Run') {
             steps {
                 sh 'python3 app.py'
             }
